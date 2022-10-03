@@ -1,0 +1,21 @@
+.post {
+    width: 323px;
+    height: 328px;
+    background-color: #fff6ef;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.post:nth-child(3n) {
+    margin-right: 0;
+} 
+
+.post__title {
+    margin: 0;
+}
+
+.post__image {
+    width: 323px;
+    height: 255px;
+    object-fit: cover;
+}

@@ -1,0 +1,32 @@
+.posts {
+    background-color: #f0b099;
+    padding-top: 60px;
+}
+
+.posts__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.posts__posts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.posts__filter {
+    margin-right: 20px;
+}
+
+.posts__filter-input {
+    border: none;
+    background-color: #fff6ef;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: rgba(11, 10, 8, 0.6);
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 30px;
+}
