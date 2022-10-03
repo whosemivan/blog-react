@@ -41,7 +41,7 @@ const FirstScreen = () => {
                                 <button onClick={logOut}>Log Out</button>
                             </li>
                             <li className="first-screen__item">
-                                <a className="first-screen__link" href="">Create Post</a>
+                                <Link to="/create-post" className="first-screen__link" href="">Create Post</Link>
                             </li>
                             </>
                             }

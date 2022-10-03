@@ -16,8 +16,6 @@ const PostCreator = () => {
             console.log(data.message);
             console.log(data);
             if (data.message === "ok") {
-                updUId(data.data._id);
-                updUName(data.data.name);
                 browserHistory.push('/');
             }
         })
