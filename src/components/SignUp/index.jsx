@@ -22,9 +22,10 @@ const SignUp = () => {
             if (data.message === "ok") {
                 updUId(data.data._id);
                 updUName(data.data.name);
-                setIsAuth(true);
+                // setIsAuth(true);
                 localStorage.setItem("author", data.data.name);
                 localStorage.setItem("userId", data.data._id);
+                localStorage.setItem("isAuth", true);
                 browserHistory.push('/');
             }
             setEmail("");

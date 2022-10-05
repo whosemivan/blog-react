@@ -7,7 +7,8 @@ import browserHistory from "../../browser-history";
 const SignIn = () => {
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
-    const { updUName, updUId, api, setIsAuth } = useContext(Ctx);
+    const [isErr, setIsErr] = useState(false);
+    const { updUName, updUId, api } = useContext(Ctx);
 
     const handler = e => {
         e.preventDefault();
@@ -17,10 +18,13 @@ const SignIn = () => {
             if (data.message === "ok") {
                 updUId(data.data._id);
                 updUName(data.data.name);
-                setIsAuth(true);
+                // setIsAuth(true);
                 localStorage.setItem("author", data.data.name);
                 localStorage.setItem("userId", data.data._id);
+                localStorage.setItem("isAuth", true);
                 browserHistory.push('/');
+            } else {
+                setIsErr(true);
             }
             setEmail("");
             setPwd("");
@@ -33,6 +37,10 @@ const SignIn = () => {
             <form onSubmit={handler} className="signin__form">
                 <input className="signin__input" onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Your email" />
                 <input className="signin__input" onChange={(e) => { setPwd(e.target.value) }} type="password" placeholder="Password" />
+                {isErr ? 
+                <p className="signin__err">Неправильные данные входа</p>
+                : ''
+                }
                 <button className="signin__btn" type="submit">Sign In</button>
             </form>
             <Link className="signin__link" to="/signup">Sign Up</Link>

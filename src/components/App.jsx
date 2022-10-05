@@ -5,6 +5,9 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import PostCreator from "./PostCreator";
 import NotFound from "./NotFound";
+import PostPage from "./PostPage";
+import EditPost from "./EditPost";
+import PersonalArea from "./PersonalArea";
 
 import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 import browserHistory from "../browser-history";
@@ -17,8 +20,8 @@ const App = () => {
   const [db, updDb] = useState(JSON.parse(localStorage.getItem("db") || "[]"));
   const [userId, setUserId] = useState(localStorage.getItem("userId") || "");
   const [userName, setUserName] = useState(localStorage.getItem("author") || "");
-  const [isAuth, setIsAuth] = useState(false);
-
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  
   return (
     <Ctx.Provider value={{
       db: db,
@@ -43,10 +46,23 @@ const App = () => {
           <Route exact path='/signin'>
             <SignIn />
           </Route>
+          <Route exact path='/post/:id'>
+            <PostPage />
+          </Route>
           <PrivateRoute exact
             path='/create-post'
             render={() => <PostCreator/>}
-            authorizationStatus={true}
+            authorizationStatus={isAuth}
+          />
+          <PrivateRoute exact
+            path='/edit-post/:id'
+            render={() => <EditPost/>}
+            authorizationStatus={isAuth}
+          />
+          <PrivateRoute exact
+            path='/personal/:id'
+            render={() => <PersonalArea/>}
+            authorizationStatus={isAuth}
           />
           <Route>
             <NotFound />

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-
+import {parse} from "./utils";
 
 const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
   return (
@@ -8,9 +8,10 @@ const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
       path={path}
       exact={exact}
       render={(routeProps) => {
-        if (authorizationStatus === true) {
+        if (parse(authorizationStatus) === true) {
           return (render(routeProps));
         }
+        console.log(typeof authorizationStatus);
         return (<Redirect to='/' />);
       }}
     />

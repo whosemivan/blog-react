@@ -19,3 +19,23 @@
     height: 255px;
     object-fit: cover;
 }
+
+.post__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__btn-like {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.6);  
+    display: flex;
+    padding: 0;
+    cursor: pointer;
+}
+
+.post__btn-like span {
+    margin: 5px;
+}

@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 import { Ctx } from "../App";
 
 const FirstScreen = () => {
-    const { updUId, updUName, isAuth, setIsAuth } = useContext(Ctx);
+    const {userId, updUId, updUName, setIsAuth } = useContext(Ctx);
 
     const logOut = (e) => {
         e.preventDefault();
         updUId("");
         updUName("");
-        setIsAuth(false);
+        // setIsAuth(false);
         localStorage.removeItem("userId");
         localStorage.removeItem("author");
+        localStorage.setItem("isAuth", false);
     }
 
     return (
@@ -32,7 +33,7 @@ const FirstScreen = () => {
                 </div>
                 <nav className="first-screen__nav">
                     <ul className="first-screen__list">
-                        {!isAuth ?
+                        {!userId ?
                             <li className="first-screen__item">
                                 <Link className="first-screen__link" to="/signin">Auth</Link>
                             </li> :
@@ -42,6 +43,9 @@ const FirstScreen = () => {
                             </li>
                             <li className="first-screen__item">
                                 <Link to="/create-post" className="first-screen__link" href="">Create Post</Link>
+                            </li>
+                            <li className="first-screen__item">
+                                <Link to={`/personal/${userId}`} className="first-screen__link" href="">Personal Area</Link>
                             </li>
                             </>
                             }

@@ -1,6 +1,7 @@
 .posts {
     background-color: #f0b099;
     padding-top: 60px;
+    min-height: 700px;
 }
 
 .posts__wrapper {
