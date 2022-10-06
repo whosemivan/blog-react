@@ -6,9 +6,9 @@ import browserHistory from "../../browser-history";
 const LikeBtn = ({post}) => {
     const { userId, api, isAuth } = useContext(Ctx);
     const [likes, setLikes] = useState(post.likes);
-
+    console.log(isAuth);
     const handler = () => {
-        if (isAuth === true) {
+        if (isAuth) {
             if (!likes.includes(userId)) {
                 api.updatePost(post._id, { likes: [...likes, userId] }).then(res => res.json()).then(data => {
                     if (data.message === "ok") {
@@ -22,9 +22,7 @@ const LikeBtn = ({post}) => {
                     }
                 })
             }
-        } else {
-            browserHistory.push('/blog-react/signin');
-        }
+        } 
     };
 
     return (
