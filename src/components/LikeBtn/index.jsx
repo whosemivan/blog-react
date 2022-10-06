@@ -2,13 +2,16 @@ import React, { useContext, useState } from "react";
 import { Ctx } from "../App";
 import { remove } from "../../utils.js";
 import browserHistory from "../../browser-history";
+import {parse} from "../../utils";
 
 const LikeBtn = ({post}) => {
     const { userId, api, isAuth } = useContext(Ctx);
     const [likes, setLikes] = useState(post.likes);
-    console.log(isAuth);
+
+    const authStatus = localStorage.getItem("isAuth");
+
     const handler = () => {
-        if (isAuth) {
+        if (parse(authStatus)) {
             if (!likes.includes(userId)) {
                 api.updatePost(post._id, { likes: [...likes, userId] }).then(res => res.json()).then(data => {
                     if (data.message === "ok") {
@@ -22,7 +25,9 @@ const LikeBtn = ({post}) => {
                     }
                 })
             }
-        } 
+        } else {
+            browserHistory.push("/blog-react/signin");
+        }
     };
 
     return (
