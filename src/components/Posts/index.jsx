@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Post from "../Post";
 import "./style.css";
 import { Ctx } from "../App";
+import { remove } from "../../utils.js";
 
 const Posts = () => {
     const [posts, setPosts] = useState();
@@ -9,7 +10,6 @@ const Posts = () => {
     const [postTags, setPostTags] = useState([]);
     const [querySearch, setQuerySearch] = useState("");
     const [selectedTags, setSelectedTags] = useState([]);
-    const [isMostPopular, setIsMostPopular] = useState(false);
     const {api} = useContext(Ctx);
 
     useEffect(() => {
@@ -19,8 +19,8 @@ const Posts = () => {
             setPosts(data.data);
             setIsLoad(true);
         });
-    }, [])
-console.log(posts);
+    }, []);
+
     return (
         <section className="posts">
             <h2 className="visually-hidden">Посты</h2>
@@ -41,10 +41,15 @@ console.log(posts);
 
                         {isLoad ? postTags.map((tag, index) => {
                             return (
-                                <button key={index} onClick={() => setSelectedTags([...selectedTags, tag])} className="posts__tag-btn">{tag}</button>
+                                <button key={index} onClick={() => {
+                                    if (!selectedTags.includes(tag)) {
+                                        setSelectedTags([...selectedTags, tag]);
+                                    } else {
+                                        setSelectedTags(remove(selectedTags, tag));
+                                    }
+                                }} className="posts__tag-btn">{tag}</button>
                             );
                         }) : ''}
-                        <button onClick={() => setIsMostPopular(!isMostPopular)} type="button">The most popular posts</button>
                     </div>
                 </div>
                 <div className="posts__posts">
@@ -63,12 +68,6 @@ console.log(posts);
                                     return post;
                                 }
                             }
-                        }
-                    }).sort((post1, post2) => {
-                        if (!isMostPopular) {
-                            return post1;
-                        } else {
-                            return post2.likes.length - post1.likes.length;
                         }
                     }).map((post) => {
                         return <Post key={post._id} post={post}></Post>

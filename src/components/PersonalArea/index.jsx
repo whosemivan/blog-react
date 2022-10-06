@@ -33,7 +33,7 @@ const PersonalArea = () => {
             {isLoad ? <>
                 <h1>Yout email: {data.email}</h1>
                 <h1>Yout name: {data.name}</h1>
-                </> : ""
+                </> : <p>Загрузка...</p>
             }
         </section>
     );

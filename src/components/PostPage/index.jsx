@@ -10,7 +10,7 @@ const PostPage = () => {
     const [isPopup, setIsPopup] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
     const [comment, setComment] = useState();
-    const { userId, api, isAuth } = useContext(Ctx);
+    const { userId, api } = useContext(Ctx);
 
     useEffect(() => {
         api.getPost(id)
@@ -53,13 +53,13 @@ const PostPage = () => {
                             <button type="submit">Отправить</button>
                         </form>
 
-                        {data.comments.map((el) => {
-                            return <p>{el}</p>
+                        {data.comments.map((el, index) => {
+                            return <p key={index}>{el}</p>
                         })}
 
                         {
-                            data.tags.map((el) => {
-                                return <p>{el}</p>
+                            data.tags.map((el, index) => {
+                                return <p key={index}>{el}</p>
                             })
                         }
                         
