@@ -27,7 +27,7 @@ const PostPage = () => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                browserHistory.push('/blog-react/');
+                browserHistory.push('/blog-react');
             })
     };
 
@@ -88,7 +88,7 @@ const PostPage = () => {
                         </div> :
                         ""
                 }
-            <Link className="post-page__link" to="/blog-react/">Home</Link>
+            <Link className="post-page__link" to="/blog-react">Home</Link>
             </div>
         </section>
     );

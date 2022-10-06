@@ -36,7 +36,7 @@ const App = () => {
     }}>
       <BrowserRouter history={browserHistory}>
         <Switch>
-          <Route exact path='/blog-react/'>
+          <Route exact path='/blog-react'>
             <FirstScreen />
             <Posts />
           </Route>

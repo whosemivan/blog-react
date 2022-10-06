@@ -21,7 +21,7 @@ const SignIn = () => {
                 localStorage.setItem("author", data.data.name);
                 localStorage.setItem("userId", data.data._id);
                 localStorage.setItem("isAuth", true);
-                browserHistory.push('/blog-react/');
+                browserHistory.push('/blog-react');
             } else {
                 setIsErr(true);
             }
@@ -43,7 +43,7 @@ const SignIn = () => {
                 <button className="signin__btn form-page__btn" type="submit">Sign In</button>
             </form>
             <Link className="signin__link form-page__link" to="/blog-react/signup">Sign Up</Link>
-            <Link className="signin__link form-page__link" to="/blog-react/">Home</Link>
+            <Link className="signin__link form-page__link" to="/blog-react">Home</Link>
         </div>
     );
 };

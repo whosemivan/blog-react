@@ -33,7 +33,7 @@ const EditPost = () => {
             console.log(data.message);
             console.log(data);
             if (data.message === "ok") {
-                browserHistory.push('/blog-react/');
+                browserHistory.push('/blog-react');
             }
         })
     };
@@ -50,7 +50,7 @@ const EditPost = () => {
                 }
                 <button className="form-page__btn" type="submit">Change</button>
             </form>
-            <Link className="form-page__link" to="/blog-react/">Home</Link>
+            <Link className="form-page__link" to="/blog-react">Home</Link>
         </section>
     );
 };
