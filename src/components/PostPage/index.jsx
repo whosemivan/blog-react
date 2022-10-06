@@ -4,16 +4,17 @@ import { useParams, Link } from 'react-router-dom';
 import { Ctx } from "../App";
 import browserHistory from "../../browser-history";
 import LikeBtn from "../LikeBtn";
-import {QRCodeSVG} from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 const PostPage = () => {
     const { id } = useParams();
     const [data, setData] = useState();
     const [isPopup, setIsPopup] = useState(false);
+    const [isPopupComments, setIsPopupComments] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
     const [comment, setComment] = useState();
     const [isQr, setIsQr] = useState(false);
-    const { userId, api } = useContext(Ctx);
+    const { userId, api, isAuth } = useContext(Ctx);
 
     useEffect(() => {
         api.getPost(id)
@@ -35,12 +36,16 @@ const PostPage = () => {
 
     const handlerComment = (evt) => {
         evt.preventDefault();
+        if (isAuth === true) {
+            api.updatePost(id, { comments: [...data.comments, comment] }).then(res => res.json()).then(data => {
+                if (data.message === "ok") {
+                    console.log('Success!');
+                }
+            })
+        } else {
+            setIsPopupComments(true);
+        }
 
-        api.updatePost(id, { comments: [...data.comments, comment] }).then(res => res.json()).then(data => {
-            if (data.message === "ok") {
-                console.log('Success!');
-            }
-        })
     };
 
     return (
@@ -90,9 +95,23 @@ const PostPage = () => {
                         </div> :
                         ""
                 }
-            <Link className="post-page__link" to="/blog-react">Home</Link>
-            <button className="post-page__btn-qr" onClick={() => setIsQr(!isQr)}>{!isQr ? "Generate" : "Close"} QR-code</button>
-            {isQr && <QRCodeSVG className="post-page__qr-code" value={`https://whosemivan.github.io/blog-react/post/${id}`} />}
+                {
+                    isPopupComments ?
+                        <div className="post-page__modal-noauth post-page__modal">
+                            <h2 className="post-page__modal-noauth-title post-page__modal-title">You can't write comments without authorization!</h2>
+                            <Link className="post-page__modal-btn post-page__modal-noauth-btn" to="/blog-react/signin">Sign In</Link>
+                            <Link className="post-page__modal-btn post-page__modal-noauth-btn" to="/blog-react/signup">Sign Up</Link>
+                            <button className="post-page__modal-btn post-page__modal-noauth-close" onClick={() => setIsPopupComments(false)}>
+                                <svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M30 3.02143L26.9786 0L15 11.9786L3.02143 0L0 3.02143L11.9786 15L0 26.9786L3.02143 30L15 18.0214L26.9786 30L30 26.9786L18.0214 15L30 3.02143Z" fill="black" />
+                                </svg>
+                            </button>
+                        </div> :
+                        ""
+                }
+                <Link className="post-page__link" to="/blog-react">Home</Link>
+                <button className="post-page__btn-qr" onClick={() => setIsQr(!isQr)}>{!isQr ? "Generate" : "Close"} QR-code</button>
+                {isQr && <QRCodeSVG className="post-page__qr-code" value={`https://whosemivan.github.io/blog-react/post/${id}`} />}
             </div>
         </section>
     );

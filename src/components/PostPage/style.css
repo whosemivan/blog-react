@@ -157,3 +157,20 @@ body {
     padding: 10px 20px;
     margin-bottom: 10px;
 }
+
+.post-page__modal-noauth-title {
+    text-align: center;
+}
+
+.post-page__modal-noauth-btn {
+    color: #0B0A08;
+    width: 100px;
+    text-align: center;
+}
+
+.post-page__modal-noauth-close {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    top: 0;
+}
