@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Ctx } from "../App";
 import browserHistory from "../../browser-history";
 import LikeBtn from "../LikeBtn";
+import {QRCodeSVG} from 'qrcode.react';
 
 const PostPage = () => {
     const { id } = useParams();
@@ -11,6 +12,7 @@ const PostPage = () => {
     const [isPopup, setIsPopup] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
     const [comment, setComment] = useState();
+    const [isQr, setIsQr] = useState(false);
     const { userId, api } = useContext(Ctx);
 
     useEffect(() => {
@@ -89,6 +91,8 @@ const PostPage = () => {
                         ""
                 }
             <Link className="post-page__link" to="/blog-react">Home</Link>
+            <button className="post-page__btn-qr" onClick={() => setIsQr(!isQr)}>{!isQr ? "Generate" : "Close"} QR-code</button>
+            {isQr && <QRCodeSVG className="post-page__qr-code" value={`https://whosemivan.github.io/blog-react/post/${id}`} />}
             </div>
         </section>
     );

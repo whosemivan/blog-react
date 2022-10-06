@@ -24,6 +24,7 @@ body {
     width: 1200px;
     margin: 0 auto;
     display: flex;
+    position: relative;
     flex-direction: column;
 }
 
@@ -99,7 +100,27 @@ body {
     letter-spacing: 0.02em;
     text-decoration-line: underline;
     color: #0B0A08;
-    top: 65px;
+    top: -350px;
+}
+
+.post-page__btn-qr {
+    position: absolute;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    text-decoration-line: underline;
+    color: #0B0A08;
+    top: -320px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Alkalami', serif;
+}
+
+.post-page__qr-code {
+    position: absolute;
+    top: -320px;
+    right: 0;
 }
 
 .post-page__link-admin {
