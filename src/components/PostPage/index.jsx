@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import "./style.css";
 import { useParams, Link } from 'react-router-dom';
 import { Ctx } from "../App";
 import browserHistory from "../../browser-history";
@@ -41,49 +42,54 @@ const PostPage = () => {
     };
 
     return (
-        <section>
-            {
-                isLoad ?
-                    <>
-                        <h1>{data.title}</h1>
-                        <img src={data.image !== undefined ? data.image : "../img/post-bc.jpg"} alt={data.title} />
-                        <LikeBtn post={data}/>
-                        <form onSubmit={handlerComment}>
-                            <input minLength={10} type="text" onChange={(e) => { setComment(e.target.value) }} />
-                            <button type="submit">Отправить</button>
-                        </form>
+        <section className="post-page">
+            <h1 className="post-page__title">{isLoad && data.title}</h1>
+            <div className="post-page__wrapper">
+                {
+                    isLoad ?
+                        <>
+                            <img className="post-page__img" src={data.image !== undefined ? data.image : "../img/post-bc.jpg"} alt={data.title} />
+                            <LikeBtn post={data} />
+                            <div className="post-page__block">
+                                {
+                                    data.tags.map((el, index) => {
+                                        return <div key={index} className="post-page__tag">{el}</div>
+                                    })
+                                }
+                            </div>
+                            <form className="post-page__form" onSubmit={handlerComment}>
+                                <h2 className="post-page__form-title">Comments</h2>
+                                <input className="post-page__input" minLength={10} type="text" onChange={(e) => { setComment(e.target.value) }} placeholder="Your comment" />
+                                <button className="post-page__btn" type="submit">Отправить</button>
+                            </form>
+                            <ul className="post-page__list">
+                                {data.comments.map((el, index) => {
+                                    return <li className="post-page__item" key={index}>{el}</li>
+                                })}
+                            </ul>
 
-                        {data.comments.map((el, index) => {
-                            return <p key={index}>{el}</p>
-                        })}
+                            {
+                                userId && userId === data.author ?
+                                    <div className="post-page__admin-panel">
+                                        <Link className="post-page__link-admin" to={`/edit-post/${id}`}>Change</Link>
+                                        <button className="post-page__link-admin" type="button" onClick={() => setIsPopup(true)}>Delete</button>
+                                    </div> : ''
+                            }
+                        </>
 
-                        {
-                            data.tags.map((el, index) => {
-                                return <p key={index}>{el}</p>
-                            })
-                        }
-                        
-                        {
-                            userId && userId === data.author ?
-                                <>
-                                    <Link to={`/edit-post/${id}`}>Change</Link>
-                                    <button type="button" onClick={() => setIsPopup(true)}>Delete</button>
-                                </> : ''
-                        }
-                    </>
-
-                    : <p>Загрузка...</p>
-            }
-            {
-                isPopup ?
-                    <div>
-                        <h2>Are you sure?</h2>
-                        <button onClick={handle}>Yes</button>
-                        <button onClick={() => setIsPopup(false)}>No</button>
-                    </div> :
-                    ""
-            }
-
+                        : <p>Загрузка...</p>
+                }
+                {
+                    isPopup ?
+                        <div className="post-page__modal">
+                            <h2 className="post-page__modal-title">Are you sure?</h2>
+                            <button className="post-page__modal-btn" onClick={handle}>Yes</button>
+                            <button className="post-page__modal-btn" onClick={() => setIsPopup(false)}>No</button>
+                        </div> :
+                        ""
+                }
+            <Link className="post-page__link" to="/">Home</Link>
+            </div>
         </section>
     );
 };

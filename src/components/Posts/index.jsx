@@ -47,7 +47,7 @@ const Posts = () => {
                                     } else {
                                         setSelectedTags(remove(selectedTags, tag));
                                     }
-                                }} className="posts__tag-btn">{tag}</button>
+                                }} className={selectedTags.includes(tag) ? "posts__tag-btn posts__tag-btn--active" : "posts__tag-btn"}>{tag}</button>
                             );
                         }) : ''}
                     </div>

@@ -1,0 +1,45 @@
+.tag-creator__btn {
+    letter-spacing: 0.02em;
+    color: #0B0A08;
+    font-size: 20px;
+    background-color: #fff6ef;
+    border: none;
+    cursor: pointer;
+    padding: 16px 70px;
+}
+
+.tag-creator__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.tag-creator__input {
+    margin: 0;
+}
+
+.tag-creator__tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-right: 10px;
+    background-color: #fff6ef;
+}
+
+.tag-creator__tag span {
+    padding-top: 5px;
+    margin-right: 10px;
+}
+
+.tag-creator__block {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.tag-creator__tag-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

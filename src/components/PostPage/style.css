@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+}
+
+.post-page {
+    min-height: 850px;
+    background-color: #FFF6EF;
+    position: relative;
+}
+
+.post-page__title {
+    font-size: 100px;
+    letter-spacing: 0.02em;
+
+    color: #0B0A08;
+    margin: 0;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 1200px;
+    padding-top: 150px;
+}
+
+.post-page__wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-page__img {
+    width: 708px;
+    height: 395px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.post-page__form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-page__form-title {
+    font-family: 'Alkalami', serif;
+    margin-top: 50px;
+}
+
+.post-page__input {
+    border: 1px solid #0B0A08;
+    padding: 10px 30px;
+    font-size: 20px;
+    width: 646px;
+    margin-bottom: 30px;
+}
+
+.post-page__btn {
+    border: 1px solid #0B0A08;
+    background: transparent;
+    font-size: 20px;
+    width: 300px;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.post-page__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-page__item {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 678px;
+    padding-left: 30px;
+    border: 1px solid #0B0A08;
+    margin-bottom: 10px;
+}
+
+.post-page__block {
+    width: 708px;
+    display: flex;
+}
+
+.post-page__tag {
+    background-color: #F0B099;   
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.post-page__link {
+    position: absolute;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    text-decoration-line: underline;
+    color: #0B0A08;
+    top: 65px;
+}
+
+.post-page__link-admin {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    text-decoration-line: underline;
+    color: #0B0A08;
+    border: none;
+    background: transparent;
+}
+
+.post-page__modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #F0B099;
+    width: 708px;
+    height: 395px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-page__modal-title {
+    font-size: 50px;
+}
+
+.post-page__modal-btn {
+    border: none;
+    background-color: #FFF6EF;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}

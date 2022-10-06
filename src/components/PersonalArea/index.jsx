@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { Link } from 'react-router-dom';
-import LikeBtn from "../LikeBtn";
 import { Ctx } from "../App";
 
 const PersonalArea = () => {
@@ -29,10 +28,11 @@ const PersonalArea = () => {
 
 
     return (
-        <section>
+        <section className="form-page">
             {isLoad ? <>
-                <h1>Yout email: {data.email}</h1>
-                <h1>Yout name: {data.name}</h1>
+                <h1>Your email: {data.email}</h1>
+                <h1>Your name: {data.name}</h1>
+                <Link className="form-page__link" to="/">Home</Link>
                 </> : <p>Загрузка...</p>
             }
         </section>

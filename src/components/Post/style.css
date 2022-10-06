@@ -4,14 +4,29 @@
     background-color: #fff6ef;
     margin-right: 20px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .post:nth-child(3n) {
     margin-right: 0;
-} 
+}
 
 .post__title {
     margin: 0;
+    display: flex;
+}
+
+.post__title a {
+    font-family: 'Alkalami', serif;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: #0B0A08;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 220px;
 }
 
 .post__image {
@@ -23,6 +38,10 @@
 .post__wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 73px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .post__btn-like {
@@ -30,7 +49,7 @@
     background-color: transparent;
     font-size: 20px;
     letter-spacing: 0.02em;
-    color: rgba(0, 0, 0, 0.6);  
+    color: rgba(0, 0, 0, 0.6);
     display: flex;
     padding: 0;
     cursor: pointer;

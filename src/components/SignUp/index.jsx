@@ -8,7 +8,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
 
-    const { updUName, updUId, api, setIsAuth } = useContext(Ctx);
+    const { updUName, updUId, api } = useContext(Ctx);
 
     const handler = e => {
         e.preventDefault();
@@ -22,7 +22,6 @@ const SignUp = () => {
             if (data.message === "ok") {
                 updUId(data.data._id);
                 updUName(data.data.name);
-                // setIsAuth(true);
                 localStorage.setItem("author", data.data.name);
                 localStorage.setItem("userId", data.data._id);
                 localStorage.setItem("isAuth", true);
@@ -35,16 +34,16 @@ const SignUp = () => {
     };
 
     return (
-        <section className="signin">
-            <h1 className="signin__title">Sign Up</h1>
-            <form onSubmit={handler} className="signin__form">
-                <input className="signin__input" onChange={(e) => setName(e.target.value)} type="text" placeholder="Your name" />
-                <input className="signin__input" onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Your email" />
-                <input className="signin__input" onChange={(e) => setPwd(e.target.value)} type="password" placeholder="Password" />
-                <button className="signin__btn" type="submit">Sign Up</button>
+        <section className="signup form-page">
+            <h1 className="form-page__title">Sign Up</h1>
+            <form onSubmit={handler} className="form-page__form">
+                <input className="form-page__input" onChange={(e) => setName(e.target.value)} type="text" placeholder="Your name" />
+                <input className="form-page__input" onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Your email" />
+                <input className="form-page__input" onChange={(e) => setPwd(e.target.value)} type="password" placeholder="Password" />
+                <button className="form-page__btn" type="submit">Sign Up</button>
             </form>
-            <Link className="signin__link" to="/signin">Sign In</Link>
-            <Link className="signin__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/signin">Sign In</Link>
+            <Link className="form-page__link" to="/">Home</Link>
         </section>
     );
 };

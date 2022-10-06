@@ -32,19 +32,19 @@ const SignIn = () => {
     };
 
     return (
-        <div className="signin">
-            <h3 className="signin__title">Sign In</h3>
-            <form onSubmit={handler} className="signin__form">
-                <input className="signin__input" onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Your email" />
-                <input className="signin__input" onChange={(e) => { setPwd(e.target.value) }} type="password" placeholder="Password" />
+        <div className="signin form-page">
+            <h3 className="signin__title form-page__title">Sign In</h3>
+            <form onSubmit={handler} className="signin__form form-page__form">
+                <input className="signin__input form-page__input" onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Your email" />
+                <input className="signin__input form-page__input" onChange={(e) => { setPwd(e.target.value) }} type="password" placeholder="Password" />
                 {isErr ? 
                 <p className="signin__err">Неправильные данные входа</p>
                 : ''
                 }
-                <button className="signin__btn" type="submit">Sign In</button>
+                <button className="signin__btn form-page__btn" type="submit">Sign In</button>
             </form>
-            <Link className="signin__link" to="/signup">Sign Up</Link>
-            <Link className="signin__link" to="/">Home</Link>
+            <Link className="signin__link form-page__link" to="/signup">Sign Up</Link>
+            <Link className="signin__link form-page__link" to="/">Home</Link>
         </div>
     );
 };

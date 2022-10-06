@@ -39,13 +39,13 @@ const FirstScreen = () => {
                             </li> :
                             <>
                             <li className="first-screen__item">
-                                <button onClick={logOut}>Log Out</button>
-                            </li>
-                            <li className="first-screen__item">
                                 <Link to="/create-post" className="first-screen__link" href="">Create Post</Link>
                             </li>
                             <li className="first-screen__item">
                                 <Link to={`/personal/${userId}`} className="first-screen__link" href="">Personal Area</Link>
+                            </li>
+                            <li className="first-screen__item">
+                                <button onClick={logOut}>Log Out</button>
                             </li>
                             </>
                             }

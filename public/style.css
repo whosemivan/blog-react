@@ -20,4 +20,78 @@ img {
     width: 1px;
     height: 1px;
     margin: -1px;
-  }
+}
+
+.form-page {
+    height: 100vh;
+    min-height: 850px;
+    background-color: #f0b099;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-page__title {
+    margin: 0;
+    font-size: 50px;
+    letter-spacing: 0.02em;
+    color: #0B0A08;
+}
+
+.form-page__form {
+    width: 552px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-page__form::after {
+    content: "";
+    background-image: url("img/heart1.svg");
+    width: 162px;
+    height: 187px;
+    position: absolute;
+    left: -300px;
+    top: -150px;
+}
+
+.form-page__form::before {
+    content: "";
+    background-image: url("img/heart2.svg");
+    width: 278px;
+    height: 289px;
+    position: absolute;
+    right: -400px;
+    top: 250px;
+}
+
+.form-page__input {
+    margin-bottom: 30px;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: #0B0A08;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 30px;
+    line-height: 38px;
+}
+
+.form-page__btn {
+    letter-spacing: 0.02em;
+    color: #0B0A08;
+    font-size: 20px;
+    background-color: #fff6ef;
+    padding: 16px 70px;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 60px;
+}
+
+.form-page__link {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    text-decoration-line: underline;
+    color: #0B0A08;
+}

@@ -38,19 +38,19 @@ const EditPost = () => {
         })
     };
     return (
-        <section className="post-creator">
-            <h2 className="post-creator__title">Change the post</h2>
-            <form onSubmit={handler} className="signin__form">
+        <section className="form-page">
+            <h2 className="form-page__title">Change the post</h2>
+            <form onSubmit={handler} className="form-page__form">
                 {isLoad ?
                     <>
-                        <input className="signin__input" onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Your title" defaultValue={data.title} />
-                        <input className="signin__input" onChange={(e) => { setImage(e.target.value) }} type="text" placeholder="Image" defaultValue={data.image} />
+                        <input className="form-page__input" onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Your title" defaultValue={data.title} />
+                        <input className="form-page__input" onChange={(e) => { setImage(e.target.value) }} type="text" placeholder="Image" defaultValue={data.image} />
                         <TagCreator tags={tags} setTags={setTags} />
                     </> : <p>Загрузка...</p>
                 }
-                <button className="signin__btn" type="submit">Change</button>
+                <button className="form-page__btn" type="submit">Change</button>
             </form>
-            <Link className="signin__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/">Home</Link>
         </section>
     );
 };

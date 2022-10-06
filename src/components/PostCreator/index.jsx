@@ -24,15 +24,15 @@ const PostCreator = () => {
     };
 
     return (
-        <section className="post-creator">
-            <h2 className="post-creator__title">Создать пост</h2>
-            <form onSubmit={handler} className="signin__form">
-                <input className="signin__input" onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Your title" />
-                <input className="signin__input" onChange={(e) => { setImage(e.target.value) }} type="text" placeholder="Image" />
+        <section className="post-creator form-page">
+            <h2 className="post-creator__title form-page__title">Create a post</h2>
+            <form onSubmit={handler} className="form-page__form">
+                <input className="form-page__input" onChange={(e) => { setTitle(e.target.value) }} type="text" placeholder="Your title" />
+                <input className="form-page__input" onChange={(e) => { setImage(e.target.value) }} type="text" placeholder="Image" />
                 <TagCreator tags={tags} setTags={setTags} />
-                <button className="signin__btn" type="submit">Create Post</button>
+                <button className="form-page__btn" type="submit">Create a post</button>
             </form>
-            <Link className="signin__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/">Home</Link>
         </section>
     );
 };

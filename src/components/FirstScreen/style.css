@@ -85,6 +85,26 @@
     text-align: center;
 }
 
+.first-screen__item button {
+    background-color: transparent;
+    border: 1px solid rgba(11, 10, 8, 0.6);
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: rgba(11, 10, 8, 0.6);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.first-screen__item:last-child {
+    margin-top: 20px;
+}
+
+.first-screen__item button:hover {
+    border-radius: 30px 0 30px 0;
+}
+
 .first-screen__link {
     font-size: 20px;
     letter-spacing: 0.02em;
