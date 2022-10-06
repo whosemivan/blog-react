@@ -20,14 +20,14 @@ const PostPage = () => {
                 setData(data.data);
                 setIsLoad(true);
             });
-    }, [data])
+    }, [data, api, id])
 
     const handle = () => {
         api.deletePost(id)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                browserHistory.push('/');
+                browserHistory.push('/blog-react/');
             })
     };
 
@@ -71,7 +71,7 @@ const PostPage = () => {
                             {
                                 userId && userId === data.author ?
                                     <div className="post-page__admin-panel">
-                                        <Link className="post-page__link-admin" to={`/edit-post/${id}`}>Change</Link>
+                                        <Link className="post-page__link-admin" to={`/blog-react/edit-post/${id}`}>Change</Link>
                                         <button className="post-page__link-admin" type="button" onClick={() => setIsPopup(true)}>Delete</button>
                                     </div> : ''
                             }
@@ -88,7 +88,7 @@ const PostPage = () => {
                         </div> :
                         ""
                 }
-            <Link className="post-page__link" to="/">Home</Link>
+            <Link className="post-page__link" to="/blog-react/">Home</Link>
             </div>
         </section>
     );

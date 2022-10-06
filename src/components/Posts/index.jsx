@@ -10,16 +10,16 @@ const Posts = () => {
     const [postTags, setPostTags] = useState([]);
     const [querySearch, setQuerySearch] = useState("");
     const [selectedTags, setSelectedTags] = useState([]);
-    const {api} = useContext(Ctx);
+    const { api } = useContext(Ctx);
 
     useEffect(() => {
         api.getPosts()
-        .then((res) => res.json())
-        .then((data) => {
-            setPosts(data.data);
-            setIsLoad(true);
-        });
-    }, []);
+            .then((res) => res.json())
+            .then((data) => {
+                setPosts(data.data);
+                setIsLoad(true);
+            });
+    }, [api]);
 
     return (
         <section className="posts">
@@ -29,13 +29,13 @@ const Posts = () => {
                     <input className="posts__filter-input" onChange={(evt) => setQuerySearch(evt.target.value)} type="text" placeholder="Search..." />
                     <div className="posts__filter-tags">
                         <h3 className="posts__filter-tags-title">Tags:</h3>
-                        {isLoad ? posts.map((post) => {
+                        {isLoad ? posts.forEach((post) => {
                             if (post.tags.length > 0) {
-                               for (let i = 0; i < post.tags.length; i++) {
-                                if (!postTags.includes(post.tags[i])) {
-                                    setPostTags([...postTags, post.tags[i]]);
+                                for (let i = 0; i < post.tags.length; i++) {
+                                    if (!postTags.includes(post.tags[i])) {
+                                        setPostTags([...postTags, post.tags[i]]);
+                                    }
                                 }
-                               }
                             }
                         }) : ''}
 
@@ -59,6 +59,7 @@ const Posts = () => {
                         } else if (post.title && post.title.toLowerCase().includes(querySearch.toLowerCase())) {
                             return post;
                         }
+                        return false;
                     }).filter((post) => {
                         if (selectedTags.length === 0) {
                             return post;
@@ -69,6 +70,7 @@ const Posts = () => {
                                 }
                             }
                         }
+                        return false;
                     }).map((post) => {
                         return <Post key={post._id} post={post}></Post>
                     }) : <p>Загрузка...</p>}

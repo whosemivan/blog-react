@@ -18,7 +18,7 @@ const PostCreator = () => {
             console.log(data.message);
             console.log(data);
             if (data.message === "ok") {
-                browserHistory.push('/');
+                browserHistory.push('/blog-react/');
             }
         })
     };
@@ -32,7 +32,7 @@ const PostCreator = () => {
                 <TagCreator tags={tags} setTags={setTags} />
                 <button className="form-page__btn" type="submit">Create a post</button>
             </form>
-            <Link className="form-page__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/blog-react/">Home</Link>
         </section>
     );
 };

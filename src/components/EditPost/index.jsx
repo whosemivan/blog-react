@@ -23,7 +23,7 @@ const EditPost = () => {
             setTitle(data.data.title);
             setImage(data.data.image);
         })
-    }, []);
+    }, [api, id]);
 
 
     const handler = e => {
@@ -33,7 +33,7 @@ const EditPost = () => {
             console.log(data.message);
             console.log(data);
             if (data.message === "ok") {
-                browserHistory.push('/');
+                browserHistory.push('/blog-react/');
             }
         })
     };
@@ -50,7 +50,7 @@ const EditPost = () => {
                 }
                 <button className="form-page__btn" type="submit">Change</button>
             </form>
-            <Link className="form-page__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/blog-react/">Home</Link>
         </section>
     );
 };

@@ -25,7 +25,7 @@ const SignUp = () => {
                 localStorage.setItem("author", data.data.name);
                 localStorage.setItem("userId", data.data._id);
                 localStorage.setItem("isAuth", true);
-                browserHistory.push('/');
+                browserHistory.push('/blog-react/');
             }
             setEmail("");
             setName("");
@@ -42,8 +42,8 @@ const SignUp = () => {
                 <input className="form-page__input" onChange={(e) => setPwd(e.target.value)} type="password" placeholder="Password" />
                 <button className="form-page__btn" type="submit">Sign Up</button>
             </form>
-            <Link className="form-page__link" to="/signin">Sign In</Link>
-            <Link className="form-page__link" to="/">Home</Link>
+            <Link className="form-page__link" to="/blog-react/signin">Sign In</Link>
+            <Link className="form-page__link" to="/blog-react/">Home</Link>
         </section>
     );
 };

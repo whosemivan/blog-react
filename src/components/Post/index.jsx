@@ -10,7 +10,7 @@ const Post = ({ post }) => {
             <img className="post__image" src={post.image !== undefined ? post.image : "img/post-bc.jpg"} alt={post.title} />
             <div className="post__wrapper">
                 <h3 className="post__title">
-                    <Link to={`/post/${post._id}`}>{post.title}</Link>
+                    <Link to={`/blog-react/post/${post._id}`}>{post.title}</Link>
                 </h3>
                 <LikeBtn post={post}/>
             </div>

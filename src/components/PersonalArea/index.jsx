@@ -15,7 +15,7 @@ const PersonalArea = () => {
             setData(data.data);
             setIsLoad(true);
         })
-    }, []);
+    }, [api, userId]);
 
     // не понимаю почему этот запрос не срабатывает !
 
@@ -32,7 +32,7 @@ const PersonalArea = () => {
             {isLoad ? <>
                 <h1>Your email: {data.email}</h1>
                 <h1>Your name: {data.name}</h1>
-                <Link className="form-page__link" to="/">Home</Link>
+                <Link className="form-page__link" to="/blog-react/">Home</Link>
                 </> : <p>Загрузка...</p>
             }
         </section>

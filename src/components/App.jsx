@@ -36,31 +36,31 @@ const App = () => {
     }}>
       <BrowserRouter history={browserHistory}>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/blog-react/'>
             <FirstScreen />
             <Posts />
           </Route>
-          <Route exact path='/signup'>
+          <Route exact path='/blog-react/signup'>
             <SignUp />
           </Route>
-          <Route exact path='/signin'>
+          <Route exact path='/blog-react/signin'>
             <SignIn />
           </Route>
-          <Route exact path='/post/:id'>
+          <Route exact path='/blog-react/post/:id'>
             <PostPage />
           </Route>
           <PrivateRoute exact
-            path='/create-post'
+            path='/blog-react/create-post'
             render={() => <PostCreator/>}
             authorizationStatus={isAuth}
           />
           <PrivateRoute exact
-            path='/edit-post/:id'
+            path='/blog-react/edit-post/:id'
             render={() => <EditPost/>}
             authorizationStatus={isAuth}
           />
           <PrivateRoute exact
-            path='/personal/:id'
+            path='/blog-react/personal/:id'
             render={() => <PersonalArea/>}
             authorizationStatus={isAuth}
           />

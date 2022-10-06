@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import { Ctx } from "../App";
 
 const FirstScreen = () => {
-    const {userId, updUId, updUName, setIsAuth } = useContext(Ctx);
+    const {userId, updUId, updUName } = useContext(Ctx);
 
     const logOut = (e) => {
         e.preventDefault();
         updUId("");
         updUName("");
-        // setIsAuth(false);
         localStorage.removeItem("userId");
         localStorage.removeItem("author");
         localStorage.setItem("isAuth", false);
@@ -35,14 +34,14 @@ const FirstScreen = () => {
                     <ul className="first-screen__list">
                         {!userId ?
                             <li className="first-screen__item">
-                                <Link className="first-screen__link" to="/signin">Auth</Link>
+                                <Link className="first-screen__link" to="/blog-react/signin">Auth</Link>
                             </li> :
                             <>
                             <li className="first-screen__item">
-                                <Link to="/create-post" className="first-screen__link" href="">Create Post</Link>
+                                <Link to="/blog-react/create-post" className="first-screen__link" href="">Create Post</Link>
                             </li>
                             <li className="first-screen__item">
-                                <Link to={`/personal/${userId}`} className="first-screen__link" href="">Personal Area</Link>
+                                <Link to={`/blog-react/personal/${userId}`} className="first-screen__link" href="">Personal Area</Link>
                             </li>
                             <li className="first-screen__item">
                                 <button onClick={logOut}>Log Out</button>
