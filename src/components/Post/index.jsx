@@ -7,7 +7,7 @@ const Post = ({ post }) => {
 
     return (
         <div className="post">
-            <img className="post__image" src={post.image !== undefined ? post.image : "img/post-bc.jpg"} alt={post.title} />
+            <img className="post__image" src={post.image !== undefined ? post.image : "./img/post-bc.jpg"} alt={post.title} />
             <div className="post__wrapper">
                 <h3 className="post__title">
                     <Link to={`/blog-react/post/${post._id}`}>{post.title}</Link>

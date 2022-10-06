@@ -48,7 +48,7 @@ img {
 
 .form-page__form::after {
     content: "";
-    background-image: url("img/heart1.svg");
+    background-image: url("../public/img/heart1.svg");
     width: 162px;
     height: 187px;
     position: absolute;
@@ -58,7 +58,7 @@ img {
 
 .form-page__form::before {
     content: "";
-    background-image: url("img/heart2.svg");
+    background-image: url("../public/img/heart2.svg");
     width: 278px;
     height: 289px;
     position: absolute;
