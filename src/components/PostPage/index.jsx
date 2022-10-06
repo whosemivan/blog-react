@@ -55,7 +55,7 @@ const PostPage = () => {
                 {
                     isLoad ?
                         <>
-                            <img className="post-page__img" src={data.image !== undefined ? data.image : "../img/post-bc.jpg"} alt={data.title} />
+                            <img className="post-page__img" src={data.image !== undefined ? data.image : "https://i.pinimg.com/564x/7b/e1/99/7be19963bc1ab28a41cbed7d07bd3594.jpg"} alt={data.title} />
                             <LikeBtn post={data} />
                             <div className="post-page__block">
                                 {
