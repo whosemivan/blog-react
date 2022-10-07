@@ -5,6 +5,7 @@ import { Ctx } from "../App";
 import browserHistory from "../../browser-history";
 import LikeBtn from "../LikeBtn";
 import { QRCodeSVG } from 'qrcode.react';
+import {parse} from "../../utils";
 
 const PostPage = () => {
     const { id } = useParams();
@@ -12,9 +13,11 @@ const PostPage = () => {
     const [isPopup, setIsPopup] = useState(false);
     const [isPopupComments, setIsPopupComments] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState("");
     const [isQr, setIsQr] = useState(false);
-    const { userId, api, isAuth } = useContext(Ctx);
+    const { userId, api } = useContext(Ctx);
+
+    const authStatus = localStorage.getItem("isAuth");
 
     useEffect(() => {
         api.getPost(id)
@@ -36,12 +39,17 @@ const PostPage = () => {
 
     const handlerComment = (evt) => {
         evt.preventDefault();
-        if (isAuth === true) {
-            api.updatePost(id, { comments: [...data.comments, comment] }).then(res => res.json()).then(data => {
-                if (data.message === "ok") {
-                    console.log('Success!');
-                }
-            })
+        if (parse(authStatus)) {
+            if (comment !== "") {
+                api.updatePost(id, { comments: [...data.comments, comment] }).then(res => res.json()).then(data => {
+                    if (data.message === "ok") {
+                        console.log('Success!');
+                    }
+                })
+            } else {
+                alert("Нельзя отправить пустой комментарий!");
+            }
+
         } else {
             setIsPopupComments(true);
         }

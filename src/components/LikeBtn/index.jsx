@@ -5,7 +5,7 @@ import browserHistory from "../../browser-history";
 import {parse} from "../../utils";
 
 const LikeBtn = ({post}) => {
-    const { userId, api, isAuth } = useContext(Ctx);
+    const { userId, api } = useContext(Ctx);
     const [likes, setLikes] = useState(post.likes);
 
     const authStatus = localStorage.getItem("isAuth");
