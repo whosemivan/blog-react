@@ -14,7 +14,7 @@
 .posts__posts {
     display: flex;
     flex-wrap: wrap;
-    width: 940px;
+    min-width: 940px;
 }
 
 .posts__filter {
